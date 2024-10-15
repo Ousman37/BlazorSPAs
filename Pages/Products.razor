@@ -1,0 +1,48 @@
+﻿@page "/products"
+
+<PageTitle>Products</PageTitle>
+
+<h1 class="text-center my-5 text-white">Products</h1> <!-- Added text-white class here -->
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in products)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="@product.ImageUrl" alt="@product.Name" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text text-muted">@product.Price.ToString("C")</p>
+                        <button class="btn btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Product> products = new List<Product>
+    {
+        new Product { Name = "Smartphone", Price = 699.99m, ImageUrl = "/images/smartphone.webp" },
+        new Product { Name = "Headphones", Price = 199.99m, ImageUrl = "/images/headphones.png" },
+        new Product { Name = "Smartwatch", Price = 249.99m, ImageUrl = "/images/smartwatch.png" },
+        new Product { Name = "Camera", Price = 499.99m, ImageUrl = "/images/camera.webp" },
+        new Product { Name = "Speaker", Price = 149.99m, ImageUrl = "/images/speaker.webp" },
+        new Product { Name = "Tablet", Price = 399.99m, ImageUrl = "/images/tablet.webp" },
+        new Product { Name = "Gaming Console", Price = 499.99m, ImageUrl = "/images/gaming_console.webp" },
+        new Product { Name = "DSLR Camera", Price = 599.99m, ImageUrl = "/images/digital_camera.webp" },
+        new Product { Name = "Gaming Controller", Price = 99.99m, ImageUrl = "/images/gaming_controller.webp" },
+        new Product { Name = "MacBook", Price = 1199.99m, ImageUrl = "/images/macbook.webp" },
+        new Product { Name = "Tablet Stand", Price = 49.99m, ImageUrl = "/images/tablet_stand.webp" },
+        new Product { Name = "Wireless Earbuds", Price = 149.99m, ImageUrl = "/images/wireless_earbuds.webp" }
+    };
+
+    public class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+}

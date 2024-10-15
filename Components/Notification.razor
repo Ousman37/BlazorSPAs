@@ -1,0 +1,59 @@
+@if (ShowNotification)
+{
+    <div class="notification @NotificationType">
+        <span>@Message</span>
+        <button class="close-btn" @onclick="HideNotification">×</button>
+    </div>
+}
+
+@code {
+    [Parameter] public string Message { get; set; }
+
+    public Notification(string message)
+    {
+        Message = message;
+    }
+
+    [Parameter] public bool ShowNotification { get; set; }
+    [Parameter] public string NotificationType { get; set; } = "info"; // Can be info, success, error
+
+    private void HideNotification()
+    {
+        ShowNotification = false;
+    }
+}
+
+<!-- Styles -->
+<style>
+    .notification {
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .notification.info {
+        background-color: #e0f7fa;
+        color: #00796b;
+    }
+
+    .notification.success {
+        background-color: #e8f5e9;
+        color: #388e3c;
+    }
+
+    .notification.error {
+        background-color: #ffebee;
+        color: #d32f2f;
+    }
+
+    .close-btn {
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+</style>

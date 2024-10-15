@@ -1,0 +1,109 @@
+/* Navbar styling */
+/* Navbar styling */
+.top-row {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.custom-icon {
+    background-color: white; /* Custom background for hamburger icon */
+    width: 30px;
+    height: 4px;
+    display: block;
+    position: relative;
+}
+
+.custom-icon::before,
+.custom-icon::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-icon::before {
+    top: -10px;
+}
+
+.custom-icon::after {
+    top: 10px;
+}
+
+/* Sidebar Menu styles */
+.navbar-links {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially off-screen */
+    height: 100%;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.95); /* Darker for better visibility */
+    transition: left 0.3s ease-out; /* Smooth slide-in effect */
+    display: flex;
+    flex-direction: column;
+    padding-top: 3.5rem;
+    z-index: 1000;
+}
+
+.navbar-links.open {
+    left: 0; /* Slide into view */
+}
+
+.navbar-links.closed {
+    left: -250px; /* Slide out of view */
+}
+
+.nav-link {
+   color: #ffffff;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+/* Responsive styles for larger screens */
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none; /* Hide hamburger on larger screens */
+    }
+
+    .navbar-links {
+        position: static;
+        left: 0;
+        background-color: transparent;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+    }
+
+    .nav-link {
+        padding: 0;
+        margin-left: 1.5rem;
+    }
+}
+

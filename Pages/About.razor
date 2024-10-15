@@ -1,0 +1,42 @@
+﻿@page "/about"
+@inject HttpClient Http
+
+<PageTitle>About BlazorSPA</PageTitle>
+
+<div class="container my-5">
+    <div class="p-5 bg-dark text-light rounded shadow">
+        <h1 class="display-4 text-center mb-5">About BlazorSPA</h1>
+
+        <p class="lead mb-4 text-justify">
+            Welcome to BlazorSPA! Our platform is designed to showcase the capabilities of Blazor for building modern, interactive web applications. Blazor allows you to write rich web applications with C# and .NET, giving you the power of a full-stack web framework in a single language.
+        </p>
+
+        <h3 class="h2 mb-3">What can you build with BlazorSPA?</h3>
+        <ul class="list-group mb-4">
+            <li class="list-group-item bg-transparent border-0 text-light">Single-Page Applications (SPAs) with dynamic content updates</li>
+            <li class="list-group-item bg-transparent border-0 text-light">Real-time interaction using SignalR</li>
+            <li class="list-group-item bg-transparent border-0 text-light">Reusable components for rapid development</li>
+            <li class="list-group-item bg-transparent border-0 text-light">Integration with .NET backend and RESTful APIs</li>
+        </ul>
+
+        <h3 class="h2 mb-3">Why Blazor?</h3>
+        <p class="lead mb-4 text-justify">
+            Blazor offers the productivity and power of C# combined with the flexibility of a modern web platform. It supports WebAssembly, server-side rendering, and allows full-stack development in C#—no need for JavaScript if you don’t want to use it!
+        </p>
+
+        <h4 class="h3 mb-3">Key Features:</h4>
+        <ul class="list-group mb-5">
+            <li class="list-group-item bg-transparent border-0 text-light">Fast development cycle with reusable components</li>
+            <li class="list-group-item bg-transparent border-0 text-light">Full-stack C# development</li>
+            <li class="list-group-item bg-transparent border-0 text-light">WebAssembly and server-side support</li>
+        </ul>
+
+        <p class="lead text-center">
+            We hope you enjoy exploring the features of BlazorSPA!
+        </p>
+    </div>
+</div>
+
+@code {
+    // You can add code here for more functionality if needed
+}

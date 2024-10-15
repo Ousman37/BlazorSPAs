@@ -1,0 +1,78 @@
+﻿@page "/"
+
+@if (ShowNotification)
+{
+    <div class="notification @NotificationType">
+        <span>@Message</span>
+        <button class="close-btn" @onclick="HideNotification">×</button>
+    </div>
+}
+
+<div class="home-container">
+    <!-- Hero Section with Image on the Right and Text on the Left -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Welcome to BlazorSPA!</h1>
+            <p>I’m a front-end developer exploring the power of C#, .NET, and Blazor. If you’re looking to update your website with modern tech, I’d love to help—contact me!</p>
+            <a href="/contact" class="hero-btn">Contact Us</a>
+        </div>
+        <div class="hero-image">
+            <img src="/images/hero-img.webp" alt="Hero Image" />
+        </div>
+    </div>
+
+    <!-- Features Section with Icons -->
+    <h2 class="mt-4">Features</h2>
+    <ul class="home-features">
+        <li>🚀 Single-Page Application (SPA) with Blazor</li>
+        <li>💡 Client-side and server-side logic in C#</li>
+        <li>🔧 Easy integration with Web APIs</li>
+        <li>📱 Responsive and interactive UI components</li>
+    </ul>
+
+    <!-- Featured Products Section -->
+    <h2 class="mt-5">Featured Products</h2>
+    <div class="featured-products">
+        @foreach (var product in featuredProducts)
+        {
+            <div class="product-card">
+                <img src="@product.ImageUrl" alt="@product.Name" class="product-image" />
+                <h3>@product.Name</h3>
+                <p class="price">@product.Price.ToString("C")</p>
+                <a href="/products" class="view-product-btn">View Here</a>
+            </div>
+        }
+    </div>
+
+    <!-- Call-to-Action Button -->
+    <div class="cta-section">
+        <a href="/products" class="home-btn">Explore Products</a>
+    </div>
+</div>
+
+
+@code {
+    private bool ShowNotification { get; set; } = true;
+    private string Message { get; set; } = "🚨 Special Offer: Get 10% off on all products this week! Don't miss out!";
+    private string NotificationType { get; set; } = "info"; // Options: info, success, error
+
+    private void HideNotification()
+    {
+        ShowNotification = false;
+    }
+
+    private List<Product> featuredProducts = new List<Product>
+    {
+        new Product { Name = "MacBook", Price = 1199.99m, ImageUrl = "/images/macbook.webp" },
+        new Product { Name = "Tablet", Price = 399.99m, ImageUrl = "/images/tablet.webp" },
+        new Product { Name = "Wireless Earbuds", Price = 149.99m, ImageUrl = "/images/wireless_earbuds.webp" }
+    };
+
+    public class Product
+    {
+        public string Name { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+}
+

@@ -1,0 +1,246 @@
+/*  //MainLayout.razor.css
+Common styles for navbar 
+*/
+/* Common styles for navbar */
+/* Common styles for navbar */
+.navbar {
+    background-color: #333; /* Dark background */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.custom-icon {
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    display: block;
+    position: relative;
+}
+
+.custom-icon::before,
+.custom-icon::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-icon::before {
+    top: -10px;
+}
+
+.custom-icon::after {
+    top: 10px;
+}
+
+/* Navbar links menu for small screens */
+.navbar-links {
+    position: fixed;
+    top: 0;
+    left: -100%; 
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9); 
+    padding-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease-out; 
+    z-index: 1000;
+}
+
+.navbar-links.open {
+    left: 0; 
+}
+
+.nav-link {
+  color: white;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 640px) {
+    .navbar-links {
+        display: none; /* Hide by default */
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-links.open {
+        display: flex;
+        left: 0; 
+    }
+
+    .nav-item {
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+}
+
+/* For larger screens */
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none; 
+    }
+
+    .navbar-links {
+        position: static;
+        left: 0;
+        background-color: transparent;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0;
+        margin-left: 1.5rem;
+    }
+}
+
+ .navbar {
+    background-color: #333; 
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+}
+
+.custom-icon {
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    display: block;
+    position: relative;
+}
+
+.custom-icon::before,
+.custom-icon::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-icon::before {
+    top: -10px;
+}
+
+.custom-icon::after {
+    top: 10px;
+}
+
+/* Navbar links styling */
+.navbar-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 60px;
+    left: -250px; 
+    width: 250px;
+    height: 100vh;
+    padding: 1rem;
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+}
+
+.navbar-links.open {
+    left: 0; 
+}
+
+.navbar-links.closed {
+    left: -250px; 
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: #00aaff;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 640px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-links {
+        left: -250px; 
+    }
+
+    .navbar-links.open {
+        left: 0; 
+    }
+
+    .nav-item {
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+}
+
+/* For larger screens */
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .navbar-links {
+        position: static;
+        display: flex;
+        background-color: transparent;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: auto;
+        height: auto;
+        gap: 2rem;
+    }
+
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .nav-link {
+        padding: 0;
+        margin-left: 1.5rem;
+    }
+} 

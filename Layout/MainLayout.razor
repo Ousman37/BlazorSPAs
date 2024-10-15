@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+
+<div class="navbar">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">BlazorSPAs</a>
+
+        <!-- Hamburger menu for small screens -->
+        <button class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon custom-icon"></span>
+        </button>
+
+        <!-- Navigation links (will collapse on small screens) -->
+        <nav class="navbar-links @NavMenuCssClass">
+            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All" @onclick="CloseMenu">Home</NavLink>
+            <NavLink class="nav-link" href="/about" @onclick="CloseMenu">About</NavLink>
+            <NavLink class="nav-link" href="/products" @onclick="CloseMenu">Products</NavLink>
+            <NavLink class="nav-link" href="/contact" @onclick="CloseMenu">Contact Us</NavLink>
+        </nav>
+    </div>
+</div>
+
+<article class="content">
+    @Body
+</article>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "navbar-links closed" : "navbar-links open";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void CloseMenu()
+    {
+        collapseNavMenu = true;
+    }
+}
