@@ -1,33 +1,14 @@
-# Use an official .NET SDK image to build the application
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-
-# Set the working directory inside the container
-WORKDIR /source
-
-# Copy the .csproj and restore dependencies as a separate step
-COPY *.sln .
-COPY YourProjectFolder/*.csproj ./YourProjectFolder/
-
-RUN dotnet restore
-
-# Copy the entire project files
+# Use the official .NET SDK image to build the app
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["BlazorSPAs.csproj", "./"]
+RUN dotnet restore "./BlazorSPAs.csproj"
 COPY . .
+RUN dotnet build "BlazorSPAs.csproj" -c Release -o /app/build
+RUN dotnet publish "BlazorSPAs.csproj" -c Release -o /app/publish
 
-# Build the project
-RUN dotnet publish -c Release -o /app --no-restore
-
-# Use a smaller runtime image to run the application
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
-
-# Set the working directory inside the runtime container
+# Use the official .NET runtime image to run the app
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-
-# Copy the build artifacts from the previous image
-COPY --from=build /app .
-
-# Expose the port on which the application will run
-EXPOSE 80
-
-# Define the entry point to run the application
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "BlazorSPAs.dll"]
-
